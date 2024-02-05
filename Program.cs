@@ -14,7 +14,14 @@ class VirtualPet
         PetType = petType;
         Name = name;
     }
-
+    public void DisplayAs()
+    {
+        Console.WriteLine("Choose an action:");
+        Console.WriteLine("1. Feed");
+        Console.WriteLine("2. Play");
+        Console.WriteLine("3. Rest");
+        Console.WriteLine("4. Quit");
+    }
     public void DisplayStatus()
     {
         Console.WriteLine($"{Name} ({PetType}) - Hunger: {Hunger}/10, Happiness: {Happiness}/10, Health: {Health}/10");
@@ -105,26 +112,31 @@ class Program
         while (true)
         {
             pet.DisplayStatus();
+            pet.DisplayAs();
 
-            Console.Write("Choose an action (feed/play/rest/quit): ");
-            string action = Console.ReadLine().ToLower();
-
-            switch (action)
+            Console.Write("Enter the number corresponding to your choice: ");
+            if (!int.TryParse(Console.ReadLine(), out int choice))
             {
-                case "feed":
+                Console.WriteLine("Invalid input. Please enter a number.");
+                continue;
+            }
+
+            switch (choice)
+            {
+                case 1:
                     pet.Feed();
                     break;
-                case "play":
+                case 2:
                     pet.Play();
                     break;
-                case "rest":
+                case 3:
                     pet.Rest();
                     break;
-                case "quit":
+                case 4:
                     Console.WriteLine("Thank you for playing!");
                     return;
                 default:
-                    Console.WriteLine("Invalid action. Please choose feed, play, rest, or quit.");
+                    Console.WriteLine("Invalid choice. Please choose a number from the options.");
                     break;
             }
 
