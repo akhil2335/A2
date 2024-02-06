@@ -99,7 +99,10 @@ class Program
     {
         Console.WriteLine("Welcome to the Virtual Pet Care Simulator!");
 
-        Console.Write("Choose a pet type (e.g., cat, dog, rabbit): ");
+        Console.Write("Choose a pet type:");
+        Console.WriteLine("1. Cat");
+        Console.WriteLine("2. Dog");
+        Console.WriteLine("3. Rabbit");
         string petType = Console.ReadLine();
 
         Console.Write("Give your pet a name: ");
@@ -114,7 +117,7 @@ class Program
             pet.DisplayStatus();
             pet.DisplayAs();
 
-            Console.Write("Enter the number corresponding to your choice: ");
+            Console.Write("Enter the number to your choice: ");
             if (!int.TryParse(Console.ReadLine(), out int choice))
             {
                 Console.WriteLine("Invalid input. Please enter a number.");
